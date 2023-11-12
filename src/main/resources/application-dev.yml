@@ -23,7 +23,7 @@ spring:
           predicates:
             - Path=/nginx/**
           filters:
-            - RewritePath=/nginx/(?<path>.*),/$\{path}
+            - RewritePath=/nginx/?(?<path>.*),/$\{path}
         - id: httpd-service
           uri: http://httpd.edu25.svc.cluster.local
           predicates:
