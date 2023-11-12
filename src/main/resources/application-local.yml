@@ -1,0 +1,38 @@
+server:
+  port: 8800
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+    gateway:
+      enabled: true
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: nginx-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/nginx/**
+          filters:
+            - RewritePath=/(?<path>.*),/$\{path}
+        - id: httpd-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/apache/**
+          filters:
+            - RewritePath=/(?<path>.*),/$\{path}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: info
+    reactor.netty: info
+    com.kt: trace
