@@ -53,12 +53,12 @@
 			<optional>true</optional>
 		</dependency>
        <!-- M1 맥북에 추가 -->
-		<dependency>
+	<!--	<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-resolver-dns-native-macos</artifactId>
 			<version>4.1.73.Final</version>
 			<classifier>osx-aarch_64</classifier>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
