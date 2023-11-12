@@ -27,10 +27,10 @@ spring:
         - id: httpd-service
           uri: http://httpd.edu25.svc
           predicates:
-            - Path=/apache/**
+            - Path=/httpd
           filters:
             #- RewritePath=/apache/(?<segment>.*)","/${segment}
-            - RewritePath=/apache/(?<path>.*),/$\{path}
+            - RewritePath=/httpd/(?<path>.*),/$\{path}
 
 logging:
   level:
