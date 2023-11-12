@@ -29,7 +29,8 @@ spring:
           predicates:
             - Path=/apache/**
           filters:
-            - RewritePath=/(?<segment>.*)","/${segment}
+            #- RewritePath=/apache/(?<segment>.*)","/${segment}
+            - RewritePath=/apache/(?<path>.*),/$\{path}
 
 logging:
   level:
