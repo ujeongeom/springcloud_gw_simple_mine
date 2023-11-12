@@ -21,7 +21,7 @@ spring:
         - id: nginx-service
           uri: http://nginx.edu25.svc
           predicates:
-            - Path=/**
+            - Path=/nginx/**
           filters:
             - RewritePath=/(?<path>.*),/$\{path}
         - id: httpd-service
