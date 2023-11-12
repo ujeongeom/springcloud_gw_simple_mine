@@ -29,7 +29,8 @@ spring:
           predicates:
             - Path=/httpd/**
           filters:
-            - RewritePath=/**
+            - RewritePath=/httpd/?(?<segment>.*), /$\{segment}
+
 
 logging:
   level:
