@@ -27,13 +27,12 @@ spring:
         - id: httpd-service
           uri: http://httpd.edu25.svc
           predicates:
-            - Path=/httpd
+            - Path=/httpd/**
           filters:
-            #- RewritePath=/apache/(?<segment>.*)","/${segment}
-            - RewritePath=/httpd/(?<path>.*),/$\{path}
+            - RewritePath=/(?<path>.*),/$\{path}
 
 logging:
   level:
-    org.springframework.cloud.gateway: info
-    reactor.netty: info
+    org.springframework.cloud.gateway: debug
+    reactor.netty: debug
     com.kt: trace
