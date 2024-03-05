@@ -1,6 +1,6 @@
 spring:
   application:
-    name: edu-simple-gateway
+    name: springcloud_gw_simple
   profiles:
     active: local
   banner:

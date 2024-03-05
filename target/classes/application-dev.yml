@@ -1,5 +1,5 @@
 server:
-  port: 8800
+  port: 8080
 
 management:
   endpoints:
@@ -14,24 +14,9 @@ management:
     gateway:
       enabled: true
 
-spring:
-  cloud:
-    gateway:
-      - id: nginx-service
-          uri: http://nginx.edu25.svc.cluster.local
-          predicates:
-            - Path=/nginx/**
-          filters:
-            - RewritePath=/(?<path>.*),/$\{path}
-      - id: httpd-service
-        uri: http://httpd.edu25.svc.cluster.local
-        predicates:
-          - Path=/apache/**
-        filters:
-          - RewritePath=/(?<path>.*),/$\{path}
 
 logging:
   level:
-    org.springframework.cloud.gateway: info
-    reactor.netty: info
+    org.springframework.cloud.gateway: debug
+    reactor.netty: debug
     com.kt: trace
