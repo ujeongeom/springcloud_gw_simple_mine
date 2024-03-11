@@ -17,23 +17,28 @@ management:
 spring:
   cloud:
     gateway:
+      httpclient:
+        # 클라이언트 <-> 게이트웨이 <-> 다운스트림 서버 request response 로깅
+        wiretap: true
       routes:
         - id: command-service
           uri: http://localhost:8081
           predicates:
             - Path=/**
-            - Method=POST
+#            - Method=POST
+#            - Header=APP_NAME, command
           filters:
             - RewritePath=/(?<path>.*),/$\{path}
         - id: query-service
           uri: http://localhost:8082
           predicates:
             - Path=/**
-            - Method=GET
+#            - Method=GET
+#            - Header=APP_NAME, query
           filters:
             - RewritePath=/(?<path>.*),/$\{path}
 logging:
   level:
-    org.springframework.cloud.gateway: debug
-    reactor.netty: debug
+    org.springframework.cloud.gateway: trace #debug
+    reactor.netty: trace #debug
     com.kt: trace
